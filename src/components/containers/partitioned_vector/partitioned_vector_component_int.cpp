@@ -23,7 +23,10 @@ HPX_REGISTER_PARTITIONED_VECTOR(long_long);
 #pragma warning(disable: 5037)
 #endif
 
-template class HPX_PARTITIONED_VECTOR_EXPORT
+template class
+#if defined(HPX_MSVC) || defined(HPX_MINGW)
+HPX_PARTITIONED_VECTOR_EXPORT
+#endif
     hpx::server::partitioned_vector<int, std::vector<int>>;
 template class HPX_PARTITIONED_VECTOR_EXPORT
     hpx::partitioned_vector_partition<int, std::vector<int>>;
@@ -37,7 +40,10 @@ template HPX_PARTITIONED_VECTOR_EXPORT
         size_type, int const&, hpx::container_distribution_policy const&,
         void*);
 
-template class HPX_PARTITIONED_VECTOR_EXPORT
+template class
+#if defined(HPX_MSVC) || defined(HPX_MINGW)
+HPX_PARTITIONED_VECTOR_EXPORT
+#endif
     hpx::server::partitioned_vector<long long, std::vector<long long>>;
 template class HPX_PARTITIONED_VECTOR_EXPORT
     hpx::partitioned_vector_partition<long long, std::vector<long long>>;

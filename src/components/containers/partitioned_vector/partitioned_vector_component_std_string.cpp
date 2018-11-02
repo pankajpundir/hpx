@@ -24,7 +24,10 @@ HPX_REGISTER_PARTITIONED_VECTOR(std_string);
 #pragma warning(disable: 5037)
 #endif
 
-template class HPX_PARTITIONED_VECTOR_EXPORT
+template class
+#if defined(HPX_MSVC) || defined(HPX_MINGW)
+HPX_PARTITIONED_VECTOR_EXPORT
+#endif
     hpx::server::partitioned_vector<std::string, std::vector<std::string>>;
 template class HPX_PARTITIONED_VECTOR_EXPORT
     hpx::partitioned_vector_partition<std::string, std::vector<std::string>>;

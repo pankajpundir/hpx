@@ -21,7 +21,10 @@ HPX_REGISTER_PARTITIONED_VECTOR(double);
 #pragma warning(disable: 5037)
 #endif
 
-template class HPX_PARTITIONED_VECTOR_EXPORT
+template class
+#if defined(HPX_MSVC) || defined(HPX_MINGW)
+HPX_PARTITIONED_VECTOR_EXPORT
+#endif
     hpx::server::partitioned_vector<double, std::vector<double>>;
 template class HPX_PARTITIONED_VECTOR_EXPORT
     hpx::partitioned_vector_partition<double, std::vector<double>>;
